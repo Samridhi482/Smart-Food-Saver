@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Food Saver — Reduce Waste & Live Sustainably</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Decorative Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <div class="logo-circle"><i class="fas fa-leaf"></i></div>
+                <h2>Welcome to Smart Food Saver</h2>
+                <p>Track food. Reduce waste. Earn rewards.</p>
+            </div>
+            <div class="modal-body">
+                <div class="input-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="usernameInput" placeholder="Enter your name" required>
+                </div>
+                <button id="startBtn" class="btn btn-primary">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="logo">
+            <span class="logo-icon"><i class="fas fa-seedling"></i></span>
+            <h1>Smart Food Saver</h1>
+        </div>
+        <button id="darkModeBtn" class="btn btn-icon-toggle">
+            <i class="fas fa-moon"></i> <span>Dark Mode</span>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <div class="badge-pill"><i class="fas fa-globe-americas"></i> SDG 12: Responsible Consumption</div>
+            <h1>Make Every Meal <span class="gradient-text">Count</span> 🌱</h1>
+            <p>
+                Track your fridge inventory, receive expiration alerts, get smart recipes, and significantly reduce your
+                environmental footprint. Join the sustainability movement!
+            </p>
+            <div class="hero-buttons">
+                <a href="#foodForm" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Food Item
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-app fade-in" id="about">
+        <h2><i class="fas fa-circle-info"></i> About Smart Food Saver</h2>
+        <p class="about-subtitle">
+            Empowering individuals to combat food waste and drive sustainable living.
+        </p>
+        <div class="about-grid">
+            <div class="about-card glass">
+                <div class="about-icon"><i class="fas fa-bell"></i></div>
+                <h3>Smart Alerts</h3>
+                <p>Never forget food in the back of the fridge. Track items and receive expiration alerts before they
+                    spoil.</p>
+            </div>
+            <div class="about-card glass">
+                <div class="about-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Recipe Finder</h3>
+                <p>Get instant recipe suggestions based on ingredients already sitting in your kitchen inventory.</p>
+            </div>
+            <div class="about-card glass">
+                <div class="about-icon"><i class="fas fa-award"></i></div>
+                <h3>Gamified Eco Impact</h3>
+                <p>Earn Eco Points, level up your badge, maintain day streaks, and visualize your reduced carbon
+                    footprint.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="dashboard-layout">
+
+        <!-- LEFT SIDEBAR: PROFILE & GAMIFICATION -->
+        <div class="sidebar-column">
+
+            <!-- User Profile Card -->
+            <section class="profile-card glass fade-in">
+                <div class="profile-header">
+                    <div class="profile-avatar"><i class="fas fa-user-circle"></i></div>
+                    <h2 id="welcomeUser">Hello 👋</h2>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <div class="stat-icon points"><i class="fas fa-seedling"></i></div>
+                        <h3 id="ecoPoints">0 🌱</h3>
+                        <p>Eco Points</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon level"><i class="fas fa-trophy"></i></div>
+                        <h3 id="userLevel">Food Saver</h3>
+                        <p>Current Level</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon streak"><i class="fas fa-fire"></i></div>
+                        <h3 id="streakCount">0 🔥</h3>
+                        <p>Day Streak</p>
+                    </div>
+                    <!-- RESTORED: Sustainability Score Card -->
+                    <div class="stat-box">
+                        <div class="stat-icon score"><i class="fas fa-heart-pulse"></i></div>
+                        <h3 id="sustainabilityScore">100</h3>
+                        <p>Saver Score</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Level Progress Card -->
+            <section class="level-progress-card glass fade-in">
+                <h2>🏆 Sustainability Progress</h2>
+                <p class="progress-sub">Keep saving food to level up!</p>
+                <div class="progress-container">
+                    <div id="progressBar"></div>
+                </div>
+            </section>
+
+            <!-- Achievements / Badges Card -->
+            <section class="badges-card glass fade-in">
+                <h2>🎖 Achievements</h2>
+                <div class="badges">
+                    <div id="badge1" class="badge">
+                        <i class="fas fa-seedling"></i>
+                        <span>Green Beginner</span>
+                    </div>
+                    <div id="badge2" class="badge">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Waste Warrior</span>
+                    </div>
+                    <div id="badge3" class="badge">
+                        <i class="fas fa-tree"></i>
+                        <span>Eco Champion</span>
+                    </div>
+                    <div id="badge4" class="badge">
+                        <i class="fas fa-recycle"></i>
+                        <span>Eco Hero</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Challenge Card -->
+            <section class="challenge-card-container glass fade-in">
+                <h2><i class="fas fa-calendar-check"></i> Daily Challenge</h2>
+                <div class="challenge-card">
+                    <div class="challenge-spark"><i class="fas fa-bolt"></i></div>
+                    <p id="dailyChallenge">Add 3 food items today.</p>
+                </div>
+            </section>
+
+            <!-- Recipe Suggestions Card -->
+            <section class="recipe-card-container glass fade-in">
+                <h2><i class="fas fa-kitchen-set"></i> Smart Recipes</h2>
+                <div class="tip-card recipes">
+                    <p id="recipeSuggestion">Add food items to get suggestions.</p>
+                </div>
+            </section>
+
+            <!-- Food Saving Tips Card -->
+            <section class="tips-card glass fade-in">
+                <h2><i class="fas fa-lightbulb"></i> Food Saving Tips</h2>
+                <div class="tip-card">
+                    <p id="foodTip">Store fruits separately to keep them fresh longer.</p>
+                    <button id="newTipBtn" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-shuffle"></i> Next Tip
+                    </button>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- RIGHT MAIN COLUMN: INVENTORY & OPERATIONS -->
+        <div class="main-column">
+
+            <!-- Expiry Alerts Box -->
+            <section class="alert-section glass warning fade-in">
+                <h2><i class="fas fa-triangle-exclamation"></i> Expiring Soon</h2>
+                <div id="expiryAlerts" class="alert-content">
+                    No urgent items.
+                </div>
+            </section>
+
+            <!-- Statistics Dashboard Grid -->
+            <section class="dashboard-grid fade-in">
+                <div class="card stat-widget total">
+                    <div class="widget-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="widget-data">
+                        <p id="totalItems" class="stat-number">0</p>
+                        <h3>Total Items</h3>
+                    </div>
+                </div>
+                <div class="card stat-widget alert">
+                    <div class="widget-icon"><i class="fas fa-clock"></i></div>
+                    <div class="widget-data">
+                        <p id="expiringItems" class="stat-number">0</p>
+                        <h3>Expiring Soon</h3>
+                    </div>
+                </div>
+                <div class="card stat-widget danger">
+                    <div class="widget-icon"><i class="fas fa-calendar-xmark"></i></div>
+                    <div class="widget-data">
+                        <p id="expiredItems" class="stat-number">0</p>
+                        <h3>Expired</h3>
+                    </div>
+                </div>
+                <div class="card stat-widget saved">
+                    <div class="widget-icon"><i class="fas fa-circle-check"></i></div>
+                    <div class="widget-data">
+                        <p id="savedItems" class="stat-number">0</p>
+                        <h3>Items Saved</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SDG / Environmental Impact Card -->
+            <section class="impact-card glass fade-in" id="impact">
+                <h2><i class="fas fa-earth-americas"></i> Your Environmental Impact</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <span class="impact-label">Groceries Tracked</span>
+                        <span class="impact-val" id="trackedCount">0</span>
+                    </div>
+                    <div class="impact-divider"></div>
+                    <div class="impact-item">
+                        <span class="impact-label">Meals Saved</span>
+                        <span class="impact-val text-green" id="savedCount">0</span>
+                    </div>
+                    <div class="impact-divider"></div>
+                    <div class="impact-item">
+                        <span class="impact-label">CO2 & Waste Saved</span>
+                        <span class="impact-val text-green" id="wasteReduced">0.0 kg</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Food Form -->
+            <section class="add-food-card glass fade-in">
+                <h2><i class="fas fa-circle-plus"></i> Add Food Item</h2>
+                <form id="foodForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="foodName"><i class="fas fa-carrot"></i> Item Name</label>
+                            <input type="text" id="foodName" placeholder="e.g. Milk, Apples, Bread" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="foodCategory"><i class="fas fa-tag"></i> Category</label>
+                            <select id="foodCategory">
+                                <option>Fruits 🍎</option>
+                                <option>Vegetables 🥦</option>
+                                <option>Dairy 🥛</option>
+                                <option>Snacks 🍪</option>
+                                <option>Beverages 🧃</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate"><i class="fas fa-calendar-days"></i> Expiry Date</label>
+                            <input type="date" id="expiryDate" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> Add Item to Pantry
+                    </button>
+                </form>
+            </section>
+
+            <!-- Pantry Category Overview -->
+            <section class="pantry-overview-card glass fade-in">
+                <h2><i class="fas fa-boxes-stacked"></i> Pantry Overview</h2>
+                <div class="pantry-grid">
+                    <div class="pantry-mini-card">
+                        <div class="pantry-icon"><i class="fas fa-apple-whole"></i></div>
+                        <h3>Fruits</h3>
+                        <p id="fruitCount">0</p>
+                    </div>
+                    <div class="pantry-mini-card">
+                        <div class="pantry-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>Vegetables</h3>
+                        <p id="vegCount">0</p>
+                    </div>
+                    <div class="pantry-mini-card">
+                        <div class="pantry-icon"><i class="fas fa-glass-water"></i></div>
+                        <h3>Dairy</h3>
+                        <p id="dairyCount">0</p>
+                    </div>
+                    <div class="pantry-mini-card">
+                        <div class="pantry-icon"><i class="fas fa-cookie"></i></div>
+                        <h3>Snacks</h3>
+                        <p id="snackCount">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inventory List Card -->
+            <section class="inventory-card glass fade-in">
+                <div class="inventory-card-header">
+                    <h2><i class="fas fa-list-check"></i> Pantry Inventory</h2>
+                    <!-- RESTORED: Search Bar -->
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search pantry...">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-bowl-food"></i> Food</th>
+                                <th><i class="fas fa-folder"></i> Category</th>
+                                <th><i class="fas fa-calendar-day"></i> Expiry Date</th>
+                                <th><i class="fas fa-heart-circle-exclamation"></i> Status</th>
+                                <th><i class="fas fa-sliders"></i> Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="foodList">
+                            <!-- Populated by script.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Achievement Popup -->
+    <div id="popup" class="popup glass alert-popup">
+        <div class="popup-icon"><i class="fas fa-medal"></i></div>
+        <div id="popupMessage" class="popup-text">Achievement Unlocked!</div>
+    </div>
+
+    <footer class="glass">
+        <div class="footer-content">
+            <p>Smart Food Saver &copy; 2026</p>
+            <p class="footer-tagline">Every action counts towards a sustainable world 🌱</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
