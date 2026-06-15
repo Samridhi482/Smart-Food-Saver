@@ -1,0 +1,1 @@
+Smart Food Saver is a web application designed to reduce food waste by helping users track food items, manage expiry dates, and get suggestions for using leftover food efficiently. The goal is to promote smarter food consumption and contribute toward sustainability.
